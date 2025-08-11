@@ -1,6 +1,14 @@
 <?php
 include "Conexion.php";
 
+//validar que sea una solicitud POST
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') { 
+    exit("Acceso no permitido."); 
+}
+
+//uso innecesario de addslashes
+$nombre = addslashes($nombre);
+
 //Recoger datos del formulario 
     $nombre = $_POST ['nombre'] ?? '';
     $apellido = $_POST ['apellido'] ?? '';
@@ -24,4 +32,5 @@ include "Conexion.php";
     echo "⚠️ Acceso no permitido. Este archivo solo debe usarse al enviar el formulario";
 }
 ?>
+
 
